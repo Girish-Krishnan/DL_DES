@@ -6,7 +6,7 @@ from subprocess import call
 from sys import argv, exit
 
 
-PATH = '/home/khan74/project/priv/new_DL_DES/'
+PATH = '.'
 
 
 if __name__ == '__main__':
