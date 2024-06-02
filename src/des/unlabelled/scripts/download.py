@@ -4,9 +4,10 @@ from os import path, makedirs,listdir
 from os.path import isfile, join
 from subprocess import call
 from sys import argv, exit
+from tqdm import tqdm
 
 
-PATH = '.'
+PATH = './'
 
 
 if __name__ == '__main__':
@@ -19,7 +20,7 @@ if __name__ == '__main__':
 
     print('len tilenames: ', len(tilenames))
     n = 0
-    for tilename in tilenames[5000:6000]:
+    for tilename in tqdm(tilenames[5000:6000]):
         req_url = 'http://desdr-server.ncsa.illinois.edu/despublic/dr1_tiles/%s/' % (tilename)
         retval = call(['wget', '-r', '-nd', 'robots=off', '-np', '-R', "index.html*", req_url, '--directory-prefix='+outpath, '-q'])
         if retval != 0:
