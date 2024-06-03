@@ -15,6 +15,8 @@ if __name__ == '__main__':
     full_overlap_crossmatch_test_set = pd.read_csv( PATH + 'deeplearning/data/full_overlap_crossmatch_test_set.csv')
     tilenames = np.array( full_overlap_crossmatch_test_set.TILENAME.unique() )
     
+    subset_size = 10
+    tilenames = tilenames[:subset_size]
     
     print('len tilenames: ', len(tilenames))
     n = 0

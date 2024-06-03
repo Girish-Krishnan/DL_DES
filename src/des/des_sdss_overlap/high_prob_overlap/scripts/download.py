@@ -15,6 +15,8 @@ if __name__ == '__main__':
     high_prob_crossmatch_test_set = pd.read_csv( PATH + 'deeplearning/data/high_prob_crossmatch_test_set.csv')
     tilenames = np.array( high_prob_crossmatch_test_set.TILENAME.unique() )
     
+    subset_size = 10
+    tilenames = tilenames[:subset_size]
     
     print('len tilenames: ', len(tilenames))
     n = 0

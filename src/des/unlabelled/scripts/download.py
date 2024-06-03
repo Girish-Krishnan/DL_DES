@@ -16,7 +16,9 @@ if __name__ == '__main__':
 
     unlabelled_test_set = pd.read_csv( PATH + 'deeplearning/data/unlabelled_test_set.csv')
     tilenames = sorted( np.array( unlabelled_test_set.TILENAME.unique() ) )
-
+    
+    subset_size = 10
+    tilenames = tilenames[:subset_size]
 
     print('len tilenames: ', len(tilenames))
     n = 0

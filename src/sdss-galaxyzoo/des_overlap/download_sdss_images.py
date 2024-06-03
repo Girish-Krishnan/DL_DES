@@ -5,8 +5,8 @@ from subprocess import call
 
 
 filters = ['u', 'g', 'r', 'i', 'z']
-out_dir = '../../../data/sdss-galaxyzoo/des_overlap/images/raw/'
-ds_path = '../../../data/sdss-galaxyzoo/des_overlap/merged_dataset.csv'
+out_dir = './data/sdss-galaxyzoo/des_overlap/images/raw/'
+ds_path = './data/sdss-galaxyzoo/des_overlap/merged_dataset.csv'
 
 
 def work(config):
@@ -30,6 +30,8 @@ exe = MPITaskPool()
 if exe.is_parent():
     df = pd.read_csv(ds_path).set_index('OBJID')
     objids = sorted(list(set(df.index.data)))
+    subset_size = 10
+    objids = objids[:subset_size] # only download a subset of the images
     configs = [(objid, filter_, df.loc[objid])
                     for objid in objids for filter_ in filters]
 else:
