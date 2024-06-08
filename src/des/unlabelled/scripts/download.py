@@ -17,16 +17,16 @@ if __name__ == '__main__':
     unlabelled_test_set = pd.read_csv( PATH + 'deeplearning/data/unlabelled_test_set.csv')
     tilenames = sorted( np.array( unlabelled_test_set.TILENAME.unique() ) )
     
-    subset_size = 10
-    tilenames = tilenames[:subset_size]
+    #subset_size = 10
+    #tilenames = tilenames[:subset_size]
 
     print('len tilenames: ', len(tilenames))
     n = 0
-    for tilename in tqdm(tilenames[5000:6000]):
+    for tilename in tqdm(tilenames[5000:5011]):
         req_url = 'http://desdr-server.ncsa.illinois.edu/despublic/dr1_tiles/%s/' % (tilename)
         retval = call(['wget', '-r', '-nd', 'robots=off', '-np', '-R', "index.html*", req_url, '--directory-prefix='+outpath, '-q'])
-        if retval != 0:
-            print('FAILED:', tilename, ', retval:', retval)
+        # if retval != 0:
+        #     print('FAILED:', tilename, ', retval:', retval)
         n += 1
 
     print('downloaded number of tiles: ', n)

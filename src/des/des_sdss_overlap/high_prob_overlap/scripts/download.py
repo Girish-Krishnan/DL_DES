@@ -23,8 +23,8 @@ if __name__ == '__main__':
     for tilename in tqdm(tilenames):
         req_url = 'http://desdr-server.ncsa.illinois.edu/despublic/dr1_tiles/%s/' % (tilename)
         retval = call(['wget', '-r', '-nd', 'robots=off', '-np', '-R', "index.html*", req_url, '--directory-prefix='+outpath, '-q'])
-        if retval != 0:
-            print('FAILED:', tilename, ', retval:', retval)
+        # if retval != 0:
+        #     print('FAILED:', tilename, ', retval:', retval)
         n += 1
         
     print('downloaded number of tiles: ', n)
